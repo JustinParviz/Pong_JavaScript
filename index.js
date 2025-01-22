@@ -38,11 +38,11 @@ resetBtn.addEventListener("click", resetGame);
 
 gameStart();
 
-function gameStart(){
+function gameStart() {
     createBall();
     nextTick();
 };
-function nextTick(){
+function nextTick() {
     intervalID = setTimeout(() => {
         clearBoard();
         drawPaddles();
@@ -52,11 +52,11 @@ function nextTick(){
         nextTick();
     }, 10)
 };
-function clearBoard(){
+function clearBoard() {
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0, 0, gameWidth, gameHeight)
 };
-function drawPaddles(){
+function drawPaddles() {
     ctx.strokeStyle = paddleBorder;
 
     ctx.fillStyle = paddle1Color;
@@ -67,13 +67,32 @@ function drawPaddles(){
     ctx.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
     ctx.strokeRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
 };
-function createBall(){};
-function moveBall(){};
-function drawBall(ballX, ballY){};
-function checkCollision(){};
-function changeDirection(){};
-function updateScore(){};
-function resetGame(){};
+function createBall() { };
+function moveBall() { };
+function drawBall(ballX, ballY) { };
+function checkCollision() { };
+function changeDirection(event) {       // this function is for moving the paddles
+    const keyPressed = event.keyCode;
+    const paddle1Up = 87;               // 87 is the keycode for w
+    const paddle1Down = 83;             // 83 is the keycode for s
+    const paddle2Up = 38;               // 38 is the keycode for the up-arrow key
+    const paddle2Down = 40;             // 40 is the keycode for the down-arrow key
+
+    switch (keyPressed) {
+        case (paddle1Up):
+            if (paddle1.y > 0) {
+                paddle1.y -= paddleSpeed;       // in this case, paddle speed is similar to paddle distance since it's how far the paddle is going to move.
+            }
+            break;
+        case (paddle1Down):
+            if (paddle1.y < gameHeight - paddle1.height) {
+                paddle1.y += paddleSpeed;
+            }
+            break;
+    }
+};
+function updateScore() { };
+function resetGame() { };
 
 
 
