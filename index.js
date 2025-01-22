@@ -89,6 +89,16 @@ function changeDirection(event) {       // this function is for moving the paddl
                 paddle1.y += paddleSpeed;
             }
             break;
+        case (paddle2Up):
+            if (paddle2.y > 0) {
+                paddle2.y -= paddleSpeed;
+            }
+            break;
+        case (paddle2Down):
+            if (paddle2.y < gameHeight - paddle2.height) {
+                paddle2.y += paddleSpeed;
+            }
+            break;
     }
 };
 function updateScore() { };
