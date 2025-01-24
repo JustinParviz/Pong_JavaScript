@@ -85,7 +85,10 @@ function createBall() {
     ballY = gameHeight / 2;
     drawBall(ballX, ballY);
 };
-function moveBall() { };
+function moveBall() { 
+    ballX += (ballSpeed * ballXDirection);
+    ballY += (ballSpeed * ballYDirection);
+};
 function drawBall(ballX, ballY) {
     ctx.fillStyle = ballColor;
     ctx.strokeStyle = ballBorderColor;
