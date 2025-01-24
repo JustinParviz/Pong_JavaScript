@@ -105,6 +105,18 @@ function checkCollision() {
     if (ballY >= gameHeight - ballRadius) {
         ballYDirection *= -1;                   // if the ball touches the bottom border, this will change the y direction
     }
+    if (ballX <= 0) {
+        player2Score += 1;
+        updateScore();
+        createBall();
+        return;                                 // if the ball touches the left border, this will update the score for player 2
+    }
+    if (ballX >= gameWidth) {
+        player1Score += 1;
+        updateScore();
+        createBall();
+        return;                                 // if the ball touches the right border, this will update the score for player 1
+    }
 };
 function changeDirection(event) {       // this function is for moving the paddles
     const keyPressed = event.keyCode;
