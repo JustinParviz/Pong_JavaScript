@@ -85,7 +85,7 @@ function createBall() {
     ballY = gameHeight / 2;
     drawBall(ballX, ballY);
 };
-function moveBall() { 
+function moveBall() {
     ballX += (ballSpeed * ballXDirection);
     ballY += (ballSpeed * ballYDirection);
 };
@@ -98,7 +98,14 @@ function drawBall(ballX, ballY) {
     ctx.stroke();
     ctx.fill();
 };
-function checkCollision() { };
+function checkCollision() {
+    if (ballY <= 0 + ballRadius) {
+        ballYDirection *= -1;                   // if the ball touches the top border, this will change the y direction
+    }
+    if (ballY >= gameHeight - ballRadius) {
+        ballYDirection *= -1;                   // if the ball touches the bottom border, this will change the y direction
+    }
+};
 function changeDirection(event) {       // this function is for moving the paddles
     const keyPressed = event.keyCode;
     const paddle1Up = 87;               // 87 is the keycode for w
