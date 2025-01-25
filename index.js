@@ -25,13 +25,13 @@ let paddle1 = {
     height: 100,                // the width and height for both paddles are in pixels
     x: 0,
     y: 0                        // these coordinates will put paddle 1 in the top left corner initially
-}
+};
 let paddle2 = {
     width: 25,
     height: 100,
     x: gameWidth - 25,
     y: gameHeight - 100         // these coordinates will put paddle 2 on the other side of the canvas initially
-}
+};
 
 window.addEventListener("keydown", changeDirection);
 resetBtn.addEventListener("click", resetGame);
@@ -165,7 +165,30 @@ function changeDirection(event) {       // this function is for moving the paddl
 function updateScore() { 
     scoreText.textContent = `${player1Score} : ${player2Score}`;
 };
-function resetGame() { };
+function resetGame() { 
+    player1Score = 0;
+    player2Score = 0;
+    paddle1 = {
+        width: 25,
+        height: 100,
+        x: 0,
+        y: 0
+    };
+    paddle2 = {
+        width: 25,
+        height: 100,
+        x: gameWidth - 25,
+        y: gameHeight - 100
+    };
+    ballSpeed = 1;
+    ballX = 0;
+    ballY = 0;
+    ballXDirection = 0;
+    ballYDirection = 0;
+    updateScore();
+    clearInterval(intervalID);
+    gameStart();
+};
 
 
 
