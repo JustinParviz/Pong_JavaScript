@@ -117,6 +117,20 @@ function checkCollision() {
         createBall();
         return;                                 // if the ball touches the right border, this will update the score for player 1
     }
+    if (ballX <= (paddle1.x + paddle1.width + ballRadius)) {
+        if (ballY > paddle1.y && ballY < paddle1.y + paddle1.height) {
+            ballX = (paddle1.x + paddle1.width) + ballRadius;       // helps prevent the ball from getting stuck within paddle 1
+            ballXDirection *= -1;                                           // this makes the ball bounce off of paddle 1 (the left paddle)
+            ballSpeed += 1;         // this will increase the ballspeed after bouncing off paddle 1
+        }
+    }
+    if (ballX >= (paddle2.x - ballRadius)) {
+        if (ballY > paddle2.y && ballY < paddle2.y + paddle2.height) {
+            ballX = paddle2.x - ballRadius;       // helps prevent the ball from getting stuck within paddle 2
+            ballXDirection *= -1;                                           // this makes the ball bounce off of paddle 2 (the right paddle)
+            ballSpeed += 1;         // this will increase the ballspeed after bouncing off paddle 2
+        }
+    }
 };
 function changeDirection(event) {       // this function is for moving the paddles
     const keyPressed = event.keyCode;
