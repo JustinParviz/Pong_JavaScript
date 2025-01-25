@@ -36,7 +36,7 @@ let paddle2 = {
 window.addEventListener("keydown", changeDirection);
 resetBtn.addEventListener("click", resetGame);
 
-gameStart();
+//gameStart();
 
 function gameStart() {
     createBall();
@@ -162,7 +162,9 @@ function changeDirection(event) {       // this function is for moving the paddl
             break;
     }
 };
-function updateScore() { };
+function updateScore() { 
+    scoreText.textContent = `${player1Score} : ${player2Score}`;
+};
 function resetGame() { };
 
 
