@@ -36,7 +36,7 @@ let paddle2 = {
 window.addEventListener("keydown", changeDirection);
 resetBtn.addEventListener("click", resetGame);
 
-//gameStart();
+gameStart();
 
 function gameStart() {
     createBall();
